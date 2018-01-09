@@ -1,0 +1,187 @@
+* {
+  box-sizing:border-box;
+}
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+body { 
+
+  font-family:'Lato';
+}
+.heading-primary {
+  font-size:2em;
+  padding:2em;
+  text-align:center;
+}
+.accordion dl,
+.accordion-list {
+   border:1px solid #ddd;
+   &:after {
+       content: "";
+       display:block;
+       height:1em;
+       width:100%;
+       background-color:darken(#ff0000, 10%);
+     }
+}
+.accordion dd,
+.accordion__panel {
+   background-color:#fff;
+   font-size:1em;
+   line-height:1.5em; 
+}
+
+.accordion p {
+  padding:1em 2em 1em 2em;
+}
+
+.accordion {
+    position:relative;
+    background-color:#000000;
+}
+.accordionTitle,
+.accordion__Heading {
+ background-color:#ff0000; 
+   text-align:center;
+     font-weight:700; 
+          padding:2em;
+          display:block;
+          text-decoration:none;
+          color:#fff;
+          transition:background-color 0.5s ease-in-out;
+  border-bottom:1px solid darken(#ff0000, 5%);
+  &:before {
+   content: "+";
+   font-size:1.5em;
+   line-height:0.5em;
+   float:left; 
+   transition: transform 0.3s ease-in-out;
+  }
+  &:hover {
+    background-color:darken(#ff0000, 10%);
+  }
+}
+.accordionTitleActive, 
+.accordionTitle.is-expanded {
+   background-color:darken(#ff0000, 10%);
+    &:before {
+     
+      transform:rotate(-225deg);
+    }
+}
+.accordionItem {
+    height:auto;
+    overflow:hidden; 
+    //SHAME: magic number to allow the accordion to animate
+    
+     max-height:50em;
+    transition:max-height 1s;   
+ 
+    
+    @media screen and (min-width:48em) {
+         max-height:15em;
+        transition:max-height 0.5s
+        
+    }
+    
+   
+}
+ 
+.accordionItem.is-collapsed {
+    max-height:0;
+}
+.no-js .accordionItem.is-collapsed {
+  max-height: auto;
+}
+.animateIn {
+     animation: accordionIn 0.45s normal ease-in-out both 1; 
+}
+.animateOut {
+     animation: accordionOut 0.45s alternate ease-in-out both 1;
+}
+@keyframes accordionIn {
+  0% {
+    opacity: 0;
+    transform:scale(0.9) rotateX(-60deg);
+    transform-origin: 50% 0;
+  }
+  100% {
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+@keyframes accordionOut {
+    0% {
+       opacity: 1;
+       transform:scale(1);
+     }
+     100% {
+          opacity:0;
+           transform:scale(0.9) rotateX(-60deg);
+       }
+}
+
+
+
+
+
+
+#graficos {
+display: inline-block; 
+margin: .5em auto; 
+padding: 0 .5em .5em; 
+border: .15em solid black; 
+font: 900 2em/1.2 sans-serif; 
+float: left; 
+border-radius: .25em; 
+}
+
+#graficos .horizontal {
+display: block; 
+font: 900 .5em/1 monospace; 
+text-align: left; 
+margin: .2em 0; 
+width: 10em; height: 1em; 
+background-color: gainsboro; 
+padding: 0; 
+border-right: solid 2.5em transparent; /* truco para compensar bg-position */
+background-image: linear-gradient(red, red); 
+background-repeat: no-repeat; 
+background-position: 2.5em 0; 
+background-size: 0 100%; 
+}
+
+#graficos #vertical {
+display: inline-block; 
+height: 200px; width: 420px; 
+font: bold 18px/1 sans-serif; 
+background-color: lime; 
+background-image: repeating-linear-gradient(black 0, black 2px, gainsboro 2px, gainsboro 20px, black 20px); 
+border: inset; 
+}
+#graficos #vertical .torre {
+position: relative; 
+display: inline-block; 
+height: inherit; width: 48px; 
+margin: 0 24px; 
+font: bold 18px/1 sans-serif; 
+background-color: transparent; 
+background-image: linear-gradient(blue, blue); 
+background-size: 80% 0%; 
+background-position: center bottom; 
+background-repeat: no-repeat; 
+box-shadow: inset 0 20px 0 0 rgba(220,220,220,.7); 
+}
+
+
+#graficos .arco {
+display: block; 
+font: 900 .8em/6em serif; 
+text-align: center; 
+margin: .2em auto; 
+width: 8em; height: 4em; 
+background-color: gainsboro; 
+padding: 0; 
+background-repeat: no-repeat; 
+background-position: 0 0; 
+background-size: 100% 100%, 100% 200%; 
+}
